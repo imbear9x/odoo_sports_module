@@ -3,7 +3,7 @@
         <!-- explicit list view definition -->
         <record id="clubs_view_kanban" model="ir.ui.view">
             <field name="name">clubs.view.tree</field>
-            <field name="model">viin_sports.clubs</field>
+            <field name="model">viin_sports.club</field>
             <field name="arch" type="xml">
                 <kanban>
                     <field name="id"/>
@@ -14,7 +14,7 @@
                         <t t-name="kanban-box">
                             <div class="oe_kanban_global_click" t-attf-style="text-align:center;flex:none">
                                 <div class="o_kanban_image" t-attf-style="float:none;margin:auto;">
-                                    <img t-att-src="kanban_image('viin_sports.clubs', 'avatar', record.id.raw_value)" alt="Clubs"/>
+                                    <img t-att-src="kanban_image('viin_sports.club', 'avatar', record.id.raw_value)" alt="Clubs"/>
                                 </div>
                                 <div class="oe_kanban_details" t-attf-style="padding-left: 0px">
                                     <strong>
@@ -32,7 +32,7 @@
         </record>
         <record id="clubs_view_tree" model="ir.ui.view">
             <field name="name">clubs.view.tree</field>
-            <field name="model">viin_sports.clubs</field>
+            <field name="model">viin_sports.club</field>
             <field name="arch" type="xml">
                 <tree>
                     <field name="club_name"/>
@@ -40,5 +40,18 @@
                 </tree>
             </field>
         </record>
+        <!-- <record id="viin_sport_club_view_form" model="ir.ui.view">
+            <field name="name">viin_sports.club.view.form</field>
+            <field name="model">viin_sports.club</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <field name="club_name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record> -->
     </data>
 </odoo>

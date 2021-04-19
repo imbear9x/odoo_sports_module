@@ -1,3 +1,4 @@
 # -*- coding: utf-8 -*-
 
-from . import clubs
+from . import club
+from . import member
