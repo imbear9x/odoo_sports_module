@@ -9,10 +9,14 @@ class Club(models.Model):
 
     club_name = fields.Char(string='Club Name')
     slogan = fields.Text(string='Slogan')
-    avatar = fields.Image(string='Avatar',attachment=True)
-    publication = fields.Html(string = 'Publication')
+    avatar = fields.Image(string='Avatar', attachment=True)
+    publication = fields.Html(string='Publication')
     member_ids = fields.Many2many(
         string="Member",
         comodel_name="hr.employee"
     )
-    
+    member_count = fields.Integer(string='Member Count')
+    state = fields.Selection([
+        ('offline', 'Offline'),
+        ('active', 'Active'),
+        ('break', 'Break')], string='State')
