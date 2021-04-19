@@ -230,7 +230,7 @@
                                <div class="o_kanban_record_top">
                                    <div class="o_kanban_record_headings">
                                        <strong class="o_kanban_record_title">
-                                            <div class="float-right" t-if="record.hr_presence_state.raw_value == 'present'">
+                                            <!-- <div class="float-right" t-if="record.hr_presence_state.raw_value == 'present'">
                                                 <span class="fa fa-circle text-success" role="img" aria-label="Present" title="Present" name="presence_present"></span>
                                             </div>
                                             <div class="float-right" t-if="record.hr_presence_state.raw_value == 'absent'">
@@ -238,7 +238,7 @@
                                             </div>
                                             <div class="float-right" t-if="record.hr_presence_state.raw_value == 'to_define'">
                                                 <span class="fa fa-circle text-warning" role="img" aria-label="To define" title="To define" name="presence_to_define"></span>
-                                            </div>
+                                            </div> -->
                                             <field name="name" placeholder="Employee's Name"/>
                                        </strong>
                                        <span t-if="record.job_title.raw_value" class="o_kanban_record_subtitle"><field name="job_title"/></span>
