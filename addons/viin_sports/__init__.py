@@ -2,7 +2,7 @@
 
 from . import controllers
 from . import models
-
+from functools import partial
 
 def uninstall_hook(cr, registry):
     def rem_website_id_null(dbname):

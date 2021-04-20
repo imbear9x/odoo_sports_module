@@ -14,10 +14,7 @@
                     <templates>
                         <t t-name="kanban-box">
                             <div class="oe_kanban_global_click" t-attf-style="text-align:center;flex:none">
-                                <div class="o_kanban_image" t-attf-style="float:none;margin:auto;">
-                                    <img t-att-src="kanban_image('viin_sports.club', 'avatar', record.id.raw_value)" alt="Clubs"/>
-                                </div>
-                                <div class="oe_kanban_details" t-attf-style="padding-left: 0px">
+                                <div class="o_kanban_record_headings">
                                     <div class="float-right" t-if="record.state.raw_value == 'active'">
                                         <span class="fa fa-circle text-success" role="img" aria-label="Available" title="Active"></span>
                                     </div>
@@ -27,6 +24,11 @@
                                     <div class="float-right" t-if="record.state.raw_value == 'break'">
                                         <span class="fa fa-circle text-warning" role="img" aria-label="Break" title="Break"></span>
                                     </div>
+                                </div>
+                                <div class="o_kanban_image" t-attf-style="float:none;margin:auto;">
+                                    <img t-att-src="kanban_image('viin_sports.club', 'avatar', record.id.raw_value)" alt="Clubs"/>
+                                </div>
+                                <div class="oe_kanban_details" t-attf-style="padding-left: 0px">
                                     <strong>
                                         <field name="club_name"/>
                                     </strong>
@@ -47,6 +49,7 @@
                 <tree>
                     <field name="club_name"/>
                     <field name="slogan"/>
+                    <field name="president"/>
                 </tree>
             </field>
         </record>
@@ -56,27 +59,57 @@
             <field name="arch" type="xml">
                 <form string="">
                     <sheet>
-                        <field name="avatar" widget="image" class="oe_avatar" options="{&quot;zoom&quot;: true, &quot;}"/>
                         <div class="oe_title">
+                            <field name="avatar" widget="image" class="oe_avatar" options="{&quot;zoom&quot;: true, &quot;}"/>
                             <h1>
-                                <field name="club_name" placeholder="Club Name" required="True"/>
+                                <field name="club_name" class="text-info" placeholder="Club Name" required="True"/>
                             </h1>
                             <h2>
-                                <field name="slogan" placeholder="Club Slogan" />
+                                <field name="slogan" class="text-secondary bg-dark" placeholder="Club Slogan" />
                             </h2>
                         </div>
                         <group>
                             <field name="member_count"/>
                             <field name="state"/>
+                            <field name="president"/>
                         </group>
                         <notebook>
                             <page string="Publication">
                                 <field name="publication"/>
                             </page>
                             <page string="Members">
-                                <field name="member_ids"/>
+                                <field name="member_ids">
+                                    <tree>
+                                        <field name="name" />
+                                    </tree>
+                                </field>
                             </page>
                             <page string="Team">
+                                <field name="team_ids" context="{'default_id': id}">
+                                    <kanban>
+                                        <field name="id"/>
+                                        <field name="team_name"/>
+                                        <field name="slogan"/>
+                                        <field name="avatar" widget="image"/>
+                                        <templates>
+                                            <t t-name="kanban-box">
+                                                <div class="oe_kanban_global_click" t-attf-style="text-align:center;flex:none">
+                                                    <div class="o_kanban_image" t-attf-style="float:none;margin:auto;">
+                                                        <img t-att-src="kanban_image('viin_sports.team', 'avatar', record.id.raw_value)" alt="Clubs"/>
+                                                    </div>
+                                                    <div class="oe_kanban_details" t-attf-style="padding-left: 0px">
+                                                        <strong>
+                                                            <field name="team_name"/>
+                                                        </strong>
+                                                        <div class="mx-auto">
+                                                            <field name="slogan"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </t>
+                                        </templates>
+                                    </kanban>
+                                </field>
                             </page>
                             <page string="Monney">
                             </page>

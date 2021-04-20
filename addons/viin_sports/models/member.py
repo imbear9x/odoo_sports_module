@@ -1,11 +1,11 @@
-# -*- coding: utf-8 -*-
-
 from odoo import models, fields, api
 
 
 class Member(models.Model):
-    _name = 'viin_sports.member'
-    _description = 'viin_sports.member'
-    _inherits = {'hr.employee': "employee_ids"}
+    _description = 'viin_sports.member_inherit_res_users'
+    _inherit = 'res.users'
 
-    
+    club_ids = fields.Many2many(
+        string="Clubs",
+        comodel_name="viin_sports.club",
+    )
