@@ -11,6 +11,11 @@ class BudgetHistory(models.Model):
     reason = fields.Char(string='Reason')
     pre_amount = fields.Float(string='Pre Amount')
     balance = fields.Float(string='Balance')
+    club_id = fields.Many2one(
+        string="Of Class",
+        comodel_name="viin_sports.club",
+        ondelete="set null",
+    )
     # Contribute funds: đóng góp quỹ
     
     

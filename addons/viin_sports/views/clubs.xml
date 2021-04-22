@@ -49,7 +49,6 @@
                 <tree>
                     <field name="club_name"/>
                     <field name="slogan"/>
-                    <field name="president"/>
                 </tree>
             </field>
         </record>
@@ -71,7 +70,11 @@
                         <group>
                             <field name="member_count"/>
                             <field name="state"/>
-                            <field name="president"/>
+                            <field name="presidents">
+                                <tree>
+                                    <field name="name"/>
+                                </tree>
+                            </field>
                         </group>
                         <notebook>
                             <page string="Publication">
@@ -112,6 +115,8 @@
                                 </field>
                             </page>
                             <page string="Monney">
+                                <field name="budget_month_ids"/>
+                                <field name="budget_history_ids"/>
                             </page>
                         </notebook>
                     </sheet>
