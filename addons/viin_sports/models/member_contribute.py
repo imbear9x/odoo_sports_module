@@ -10,12 +10,11 @@ class MemberContribute(models.Model):
         comodel_name="res.users",
         ondelete="set null",
     )
-    state = fields.Boolean(string="State",default=False)
-    budget_month_ids = fields.Many2many(
+
+    state = fields.Boolean(string="State", default=False)
+    budget_month_id = fields.Many2one(
         string="Budget Month",
         comodel_name="viin_sports.budget_month",
-        relation="budget_month_member_contribute_rels",
-        column1="member_contribute_id",
-        column2="month_id",
     )
+    offer_amount = fields.Float(string='Offer Amount',related='budget_month_id.club_id.contributions_convention')
     

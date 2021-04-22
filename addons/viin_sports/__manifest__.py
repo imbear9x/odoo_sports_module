@@ -23,7 +23,10 @@
         'security/ir.model.access.csv',
         'views/main.xml',
         'views/templates.xml',
+        'views/team.xml',
         'views/clubs.xml',
+        'views/budget_month_view.xml',
+        'views/member_contribute.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

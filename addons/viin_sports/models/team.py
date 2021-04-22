@@ -29,7 +29,11 @@ class Team(models.Model):
         domain="[('team_ids', 'in', id)]",
         default=lambda self: self.env.user
     )
-
+    club_id = fields.Many2one(
+        string="Clubs",
+        comodel_name="viin_sports.club",
+        ondelete="set null",
+    )
     member_ids = fields.Many2many(
         string="Members",
         comodel_name="res.users",
@@ -45,15 +49,4 @@ class Team(models.Model):
         for r in self:
             r.member_count = len(r.member_ids)
 
-    @api.model
-    def _default_club(self):
-        parent_club_id = self.env.context.get('default_id')
-        if parent_club_id:
-            parent_obj = self.env['viin_sports.club'].browse(parent_club_id)
-            return parent_obj
-    club_id = fields.Many2one(
-        string="Clubs",
-        comodel_name="viin_sports.club",
-        ondelete="set null",
-        default=_default_club
-    )
+    

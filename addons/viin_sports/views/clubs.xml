@@ -64,12 +64,14 @@
                                 <field name="club_name" class="text-info" placeholder="Club Name" required="True"/>
                             </h1>
                             <h2>
-                                <field name="slogan" class="text-secondary bg-dark" placeholder="Club Slogan" />
+                                <field name="slogan" class="text-warning" placeholder="Club Slogan" />
                             </h2>
                         </div>
                         <group>
                             <field name="member_count"/>
                             <field name="state"/>
+                            <field name="contributions_convention"/>
+                            <field name="total_balance"/>
                             <field name="presidents">
                                 <tree>
                                     <field name="name"/>
@@ -88,7 +90,7 @@
                                 </field>
                             </page>
                             <page string="Team">
-                                <field name="team_ids" context="{'default_id': id}">
+                                <field name="team_ids">
                                     <kanban>
                                         <field name="id"/>
                                         <field name="team_name"/>
