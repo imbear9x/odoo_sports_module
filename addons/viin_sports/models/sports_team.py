@@ -4,10 +4,10 @@ from odoo import models, fields, api
 
 
 class Team(models.Model):
-    _name = 'viin_sports.team'
-    _description = 'viin_sports.team'
+    _name = 'sports.team'
+    _description = 'The team in a club sports'
 
-    team_name = fields.Char(string="Team name", )
+    team_name = fields.Char(string="Team Name", )
 
     avatar = fields.Image(
         string='Avatar',
@@ -32,7 +32,8 @@ class Team(models.Model):
     club_id = fields.Many2one(
         string="Clubs",
         comodel_name="viin_sports.club",
-        ondelete="set null",
+        ondelete="restrict",
+        required = True
     )
     member_ids = fields.Many2many(
         string="Members",

@@ -32,7 +32,7 @@ class Club(models.Model):
         default=lambda self: self.env.user
     )
     team_ids = fields.One2many(
-        'viin_sports.team',
+        'sports.team',
         'club_id',
         string='Teams',
     )

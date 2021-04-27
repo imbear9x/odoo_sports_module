@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from . import club
-from . import team
+from . import sports_team
 from . import member
 from . import budget
 from . import member_contribute

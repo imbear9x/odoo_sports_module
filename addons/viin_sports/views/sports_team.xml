@@ -1,8 +1,8 @@
 <odoo>
     <data>
-        <record id="viin_sport_team_view_form" model="ir.ui.view">
-            <field name="name">viin_sports.team.view.form</field>
-            <field name="model">viin_sports.team</field>
+        <record id="sports_team_view_form" model="ir.ui.view">
+            <field name="name">sports_team_view_form</field>
+            <field name="model">sports.team</field>
             <field name="arch" type="xml">
                 <form string="">
                     <sheet>

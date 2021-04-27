@@ -2,7 +2,7 @@ from odoo import models, fields, api
 
 
 class Member(models.Model):
-    _description = 'viin_sports.inherit_res_users'
+    _description = 'Exte'
     _inherit = 'res.users'
 
     club_ids = fields.Many2many(
@@ -14,7 +14,7 @@ class Member(models.Model):
     )
     team_ids = fields.Many2many(
         string="Teams",
-        comodel_name="viin_sports.team",
+        comodel_name="sports.team",
         relation="team_member_user",
         column1="user_id",
         column2="team_id"

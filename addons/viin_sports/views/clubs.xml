@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="oe_kanban_details" t-attf-style="padding-left: 0px">
                                     <strong>
-                                        <field name="club_name"/>
+                                        <field name="club_name" context="{'idkhoi':'11111'}"/>
                                     </strong>
                                     <div class="mx-auto">
                                         <field name="slogan"/>

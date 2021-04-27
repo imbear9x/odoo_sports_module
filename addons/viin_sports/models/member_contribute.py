@@ -16,5 +16,12 @@ class MemberContribute(models.Model):
         string="Budget Month",
         comodel_name="viin_sports.budget_month",
     )
-    offer_amount = fields.Float(string='Offer Amount',related='budget_month_id.club_id.contributions_convention')
-    
+    offer_amount = fields.Float(string='Offer Amount',compute='_compute_offer_amount',store=True,)
+    @api.depends('budget_month_id.club_id')
+    def _compute_offer_amount(self):
+        for r in self:
+            # if not r.offer_amount or r.offer_amount < r.budget_month_id.club_id.
+            if not r.offer_amount:
+                r.offer_amount = r.budget_month_id.club_id.contributions_convention
+            else:
+                r.offer_amount = r.offer_amount
