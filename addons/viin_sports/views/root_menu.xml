@@ -1,16 +1,16 @@
 <odoo>
     <data>
         <!-- explicit list view definition -->
-        <record id="viin_sports_clubs" model="ir.actions.act_window">
+        <record id="sports_club_action" model="ir.actions.act_window">
             <field name="name">Sports Clubs List</field>
-            <field name="res_model">viin_sports.club</field>
+            <field name="res_model">sports.club</field>
             <field name="view_mode">kanban,tree,form,activity</field>
         </record>
         <menuitem name="Sports Clubs"
-            id="menu_viin_sports_configuration"
+            id="menu_sports_configuration"
             sequence="9"
             groups="base.group_user"
             web_icon="viin_sports,static/description/icon.png"
-            action="viin_sports_clubs"/>
+            action="sports_club_action"/>
     </data>
 </odoo>

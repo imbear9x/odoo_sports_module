@@ -3,11 +3,11 @@
         <!-- explicit list view definition -->
         <record id="clubs_view_kanban" model="ir.ui.view">
             <field name="name">clubs.view.tree</field>
-            <field name="model">viin_sports.club</field>
+            <field name="model">sports.club</field>
             <field name="arch" type="xml">
                 <kanban>
                     <field name="id"/>
-                    <field name="club_name"/>
+                    <field name="name"/>
                     <field name="slogan"/>
                     <field name="state"/>
                     <field name="avatar" widget="image"/>
@@ -26,11 +26,11 @@
                                     </div>
                                 </div>
                                 <div class="o_kanban_image" t-attf-style="float:none;margin:auto;">
-                                    <img t-att-src="kanban_image('viin_sports.club', 'avatar', record.id.raw_value)" alt="Clubs"/>
+                                    <img t-att-src="kanban_image('sports.club', 'avatar', record.id.raw_value)" alt="Clubs"/>
                                 </div>
                                 <div class="oe_kanban_details" t-attf-style="padding-left: 0px">
                                     <strong>
-                                        <field name="club_name" context="{'idkhoi':'11111'}"/>
+                                        <field name="name" context="{'idkhoi':'11111'}"/>
                                     </strong>
                                     <div class="mx-auto">
                                         <field name="slogan"/>
@@ -44,24 +44,24 @@
         </record>
         <record id="clubs_view_tree" model="ir.ui.view">
             <field name="name">clubs.view.tree</field>
-            <field name="model">viin_sports.club</field>
+            <field name="model">sports.club</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="club_name"/>
+                    <field name="name"/>
                     <field name="slogan"/>
                 </tree>
             </field>
         </record>
         <record id="viin_sport_club_view_form" model="ir.ui.view">
-            <field name="name">viin_sports.club.view.form</field>
-            <field name="model">viin_sports.club</field>
+            <field name="name">sports.club.view.form</field>
+            <field name="model">sports.club</field>
             <field name="arch" type="xml">
                 <form string="">
                     <sheet>
                         <div class="oe_title">
                             <field name="avatar" widget="image" class="oe_avatar" options="{&quot;zoom&quot;: true, &quot;}"/>
                             <h1>
-                                <field name="club_name" class="text-info" placeholder="Club Name" required="True"/>
+                                <field name="name" class="text-info" placeholder="Club Name" required="True"/>
                             </h1>
                             <h2>
                                 <field name="slogan" class="text-warning" placeholder="Club Slogan" />
@@ -70,9 +70,8 @@
                         <group>
                             <field name="member_count"/>
                             <field name="state"/>
-                            <field name="contributions_convention"/>
                             <field name="total_balance"/>
-                            <field name="presidents">
+                            <field name="president_ids">
                                 <tree>
                                     <field name="name"/>
                                 </tree>
@@ -93,18 +92,18 @@
                                 <field name="team_ids">
                                     <kanban>
                                         <field name="id"/>
-                                        <field name="team_name"/>
+                                        <field name="name"/>
                                         <field name="slogan"/>
                                         <field name="avatar" widget="image"/>
                                         <templates>
                                             <t t-name="kanban-box">
                                                 <div class="oe_kanban_global_click" t-attf-style="text-align:center;flex:none">
                                                     <div class="o_kanban_image" t-attf-style="float:none;margin:auto;">
-                                                        <img t-att-src="kanban_image('viin_sports.team', 'avatar', record.id.raw_value)" alt="Clubs"/>
+                                                        <img t-att-src="kanban_image('sports.team', 'avatar', record.id.raw_value)" alt="Clubs"/>
                                                     </div>
                                                     <div class="oe_kanban_details" t-attf-style="padding-left: 0px">
                                                         <strong>
-                                                            <field name="team_name"/>
+                                                            <field name="name"/>
                                                         </strong>
                                                         <div class="mx-auto">
                                                             <field name="slogan"/>
@@ -117,8 +116,8 @@
                                 </field>
                             </page>
                             <page string="Monney">
-                                <field name="budget_month_ids"/>
-                                <field name="budget_history_ids"/>
+                                <field name="budget_manager_ids"/>
+                                <field name="transaction_ids"/>
                             </page>
                         </notebook>
                     </sheet>

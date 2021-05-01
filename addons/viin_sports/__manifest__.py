@@ -21,12 +21,12 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'views/main.xml',
+        'views/root_menu.xml',
         'views/templates.xml',
         'views/sports_team.xml',
-        'views/clubs.xml',
-        'views/budget_month_view.xml',
-        'views/member_contribute.xml',
+        'views/sports_clubs.xml',
+        'views/sports_budget_manager.xml',
+        'views/sports_contribute.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

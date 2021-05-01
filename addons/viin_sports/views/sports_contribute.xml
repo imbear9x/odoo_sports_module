@@ -1,8 +1,8 @@
 <odoo>
     <data>
-        <record id="member_contribute_view_tree" model="ir.ui.view">
+        <record id="contribute_view_tree" model="ir.ui.view">
             <field name="name">member_contribute_tree</field>
-            <field name="model">viin_sports.member_contribute</field>
+            <field name="model">sports.contribute</field>
             <field name="arch" type="xml">
                 <tree>
                     <field name="member_id"/>
