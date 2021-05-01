@@ -27,6 +27,7 @@
         'views/sports_clubs.xml',
         'views/sports_budget_manager.xml',
         'views/sports_contribute.xml',
+        'views/sports_transaction.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -9,7 +9,7 @@ class BudgetHistory(models.Model):
     title = fields.Char(String= 'Title')
     transaction_time = fields.Date(string='Time', default=fields.Date.today())
     amount = fields.Float(string='Amount',default=0)
-    reason = fields.Char(string='Reason')
+    reason = fields.Text(string='Reason')
     pre_amount = fields.Float(string='Pre Amount')
     balance = fields.Float(string='Balance')
     club_id = fields.Many2one(
@@ -31,14 +31,7 @@ class BudgetHistory(models.Model):
         default = 'draft' 
     )
     
-    @api.model
-    def create(self, vals):
-        rec = super(BudgetHistory, self).create(vals)
-        if vals.get('tran_type') == 'deposit':
-            self._cal_club_total_amount(abs(vals['amount']))
-        else:
-            self._cal_club_total_amount(-vals['amount'])
-        return rec
+    
 
     def cal_club_total_amount(self):
         for r in self:
@@ -58,6 +51,13 @@ class BudgetHistory(models.Model):
                 r.cal_club_total_amount()
             else:
                 raise UserError('Only transaction with state  is confirm')
+            
+    def action_confirm_tran(self):
+        for r in self:
+            if r.state == 'draft':
+                r.state = 'confirm'
+            else:
+                raise UserError('Only transaction with state  is draft')
             
             
             

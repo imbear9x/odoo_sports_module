@@ -1,22 +1,38 @@
 <odoo>
-    <data>
-        <record id="sports_transaction_view_form" model="ir.ui.view">
-            <field name="name">sports_transaction_view_form</field>
-            <field name="model">sports.transaction</field>
-            <field name="arch" type="xml">
-                <form>
-                	<header>
-                		<button action="action_approval_tran" type="object" string="Done" class="oe_highlight"/> 
-                		<field name="state" widget="statusbar" statusbar_visiable="draft,confirm,done"/>
-                	</header>
-                    <sheet>
-                    	<field name="title"/>
-                    	<field name="amount"/>
-                    	<field name="reason"/>
-                    	<field name="tran_type"/>
-                    </sheet>
-                </form>
-            </field>
-        </record>
-    </data>
+	<record id="sports_transaction_view_form" model="ir.ui.view">
+		<field name="name">sports_transaction_view_form</field>
+		<field name="model">sports.transaction</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+					<button name="action_confirm_tran" type="object"
+						string="Confirm" class="oe_highlight" />
+					<button name="action_approval_tran" type="object"
+						string="Done" class="oe_highlight" />
+					<field name="state" widget="statusbar"
+						statusbar_visiable="draft,confirm,done" />
+				</header>
+				<sheet>
+					<group>
+						<field name="title" />
+						<field name="amount" />
+						<field name="reason" />
+						<field name="tran_type" />
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<record id="sports_transaction_view_tree" model="ir.ui.view">
+		<field name="name">sports_transaction_view_form</field>
+		<field name="model">sports.transaction</field>
+		<field name="arch" type="xml">
+			<tree decoration-success="state=='done'" decoration-warning="state=='draft'"
+				decoration-info="state=='confirm'">
+				<field name="title" />
+				<field name="amount" />
+				<field name="state"/>
+			</tree>
+		</field>
+	</record>
 </odoo>
