@@ -4,8 +4,14 @@
             <field name="name">budget.month.tree</field>
             <field name="model">sports.budget_manager</field>
             <field name="arch" type="xml">
-                <tree>
+                <tree decoration-danger="state=='finish'" 
+                	decoration-warning="state=='ready'"
+                	decoration-success="state=='active'" >
                     <field name="name"/>
+                    <field name="contributions_convention"/>
+                    <field name="estimate_amount"/>
+                    <field name="real_amount"/>
+                    <field name="state" />
                 </tree>
             </field>
         </record>
@@ -21,6 +27,7 @@
                             <field name="estimate_amount" />
                             <field name="real_amount" />
                             <field name="contribute_ids"/>
+                            <field name="state"/>
                         </group>
                     </sheet>
                 </form>

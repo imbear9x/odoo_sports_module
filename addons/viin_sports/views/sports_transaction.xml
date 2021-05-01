@@ -5,12 +5,12 @@
 		<field name="arch" type="xml">
 			<form>
 				<header>
-					<button name="action_confirm_tran" type="object"
-						string="Confirm" class="oe_highlight" />
 					<button name="action_approval_tran" type="object"
-						string="Done" class="oe_highlight" />
+						string="Confirm" class="oe_highlight" />
+					<button name="action_reject_tran" type="object"
+						string="Reject" class="oe_highlight" />
 					<field name="state" widget="statusbar"
-						statusbar_visiable="draft,confirm,done" />
+						statusbar_visiable="ready,confirm,reject" />
 				</header>
 				<sheet>
 					<group>
@@ -27,11 +27,12 @@
 		<field name="name">sports_transaction_view_form</field>
 		<field name="model">sports.transaction</field>
 		<field name="arch" type="xml">
-			<tree decoration-success="state=='done'" decoration-warning="state=='draft'"
-				decoration-info="state=='confirm'">
+			<tree decoration-success="state=='done'" decoration-warning="state=='ready'"
+				decoration-danger="state=='reject'">
 				<field name="title" />
 				<field name="amount" />
 				<field name="state"/>
+				<field name="transaction_time" widget="datetime"/>
 			</tree>
 		</field>
 	</record>

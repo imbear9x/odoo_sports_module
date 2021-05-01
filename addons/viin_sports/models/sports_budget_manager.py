@@ -12,6 +12,16 @@ class BudgetManager(models.Model):
         string='Estimate Amount', compute='_compute_contribute', store=True,)
     real_amount = fields.Float(
         string='Real Amount', compute='_compute_contribute', store=True, default=0)
+    state = fields.Selection(
+        [
+        ('ready','ready'),
+        ('active','active'),
+        ('finish','finish'),
+        ],
+        default='ready',
+        String = 'State'
+    )
+    # state = fields.Boolean(string= 'State',default=False)
     contribute_ids = fields.One2many(
         'sports.contribute',
         'budget_manager_id',
@@ -21,6 +31,7 @@ class BudgetManager(models.Model):
         'sports.club',
         string='CLub',
     )
+    
 
     @api.depends('contribute_ids')
     def _compute_contribute(self):
