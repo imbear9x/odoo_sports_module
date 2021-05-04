@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_viin_sports_club,sports.club,model_sports_club,base.group_user,1,1,1,1
+access_viin_sports_team,sports.team,model_sports_team,base.group_user,1,1,1,1
+access_viin_sports_contribute,sports.contribute,model_sports_contribute,base.group_user,1,1,1,1
+access_viin_sports_budget_manager,sports.budget_manager,model_sports_budget_manager,base.group_user,1,1,1,1
+access_viin_sports_transaction,sports.transaction,model_sports_transaction,base.group_user,1,1,1,1
