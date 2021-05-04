@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<odoo>
+        <record id="sport_contribute_member_view_form" model="ir.ui.view">
+            <field name="name">contribute_member</field>
+            <field name="model">add_contribute_member</field>
+            <field name="arch" type="xml">
+                <form string="Add member contribute">
+                    <group class="oe_title">
+                        <field name="user_ids"/>
+                    </group>
+                    <footer>
+                        <button name="action_add_member" string="Submit" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="sports_add_member_contribute_action" model="ir.actions.act_window">
+            <field name="name">Add member contribute</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">add_contribute_member</field>
+            <field name="binding_model_id" ref="model_sports_budget_manager"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="sport_contribute_member_view_form"/>
+            <field name="target">new</field>
+        </record>
+</odoo>

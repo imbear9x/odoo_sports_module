@@ -6,7 +6,7 @@ class MemberContribute(models.Model):
     _name = 'sports.contribute'
     _description = 'Amount contribute of a member in a club'
     
-    member_id = fields.Many2one(
+    user_id = fields.Many2one(
         string="Member Contribute",
         comodel_name="res.users",
         ondelete="set null",
@@ -17,4 +17,6 @@ class MemberContribute(models.Model):
         string="Budget Manager",
         comodel_name="sports.budget_manager",
     )
-    offer_amount = fields.Float(string='Offer Amount',related='budget_manager_id.contributions_convention',store=True,)
+    # def _default_offer_amount(self):
+        
+    offer_amount = fields.Float(string='Offer Amount',store=True,)

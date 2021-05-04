@@ -22,12 +22,14 @@
     'data': [
         'security/ir.model.access.csv',
         'views/root_menu.xml',
+        'wizards/add_contribute_member_view.xml',
         'views/templates.xml',
         'views/sports_team.xml',
         'views/sports_clubs.xml',
         'views/sports_budget_manager.xml',
         'views/sports_contribute.xml',
         'views/sports_transaction.xml',
+        
     ],
     # only loaded in demonstration mode
     'demo': [

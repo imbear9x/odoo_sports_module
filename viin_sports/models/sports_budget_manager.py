@@ -7,11 +7,11 @@ class BudgetManager(models.Model):
     _description = 'Budget month manager'
 
     name = fields.Char(string="Name", default='January')
-    contributions_convention = fields.Float(string='Contributions Convention')# quy uoc moi nguoi se dong bao nhieu
+    person_contribute = fields.Float(string="Person's contribute")# quy uoc moi nguoi se dong bao nhieu
     estimate_amount = fields.Float(
         string='Estimate Amount', compute='_compute_contribute', store=True,)
     real_amount = fields.Float(
-        string='Real Amount', compute='_compute_contribute', store=True, default=0)
+        string='Real Amount', compute='_compute_contribute', store=True)
     state = fields.Selection(
         [
         ('ready','ready'),
@@ -39,7 +39,23 @@ class BudgetManager(models.Model):
             for r in self:
                 r.estimate_amount = sum(
                     r.contribute_ids.mapped('offer_amount'))
-                a = r.contribute_ids.mapped(lambda x: x.offer_amount if x.state else 0)
-                r.real_amount = sum(a)
-        except:
-            print('huhuh')
+                _offer_amounts = r.contribute_ids.mapped(lambda x: x.offer_amount if x.state else 0)
+                r.real_amount = sum(_offer_amounts)
+        except Exception as e:
+            print(e)
+            
+    def action_active_state(self):
+        for r in self:
+            if r.state == 'ready':
+                r.state = 'active'
+            else:
+                raise UserError('Only with state  is ready')
+    def action_finish_state(self):
+        for r in self:
+            if r.state == 'active':
+                r.state = 'finish'
+            else:
+                raise UserError('Only with state  is active')
+                
+            
+            

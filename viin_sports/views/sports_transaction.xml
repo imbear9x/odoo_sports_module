@@ -6,9 +6,11 @@
 			<form>
 				<header>
 					<button name="action_approval_tran" type="object"
-						string="Confirm" class="oe_highlight" />
+						string="Confirm" class="oe_highlight"
+						attrs="{'invisible': [('state','!=','ready')]}" />
 					<button name="action_reject_tran" type="object"
-						string="Reject" class="oe_highlight" />
+						string="Reject" class="oe_highlight" 
+						attrs="{'invisible': [('state','!=','ready')]}"/>
 					<field name="state" widget="statusbar"
 						statusbar_visiable="ready,confirm,reject" />
 				</header>

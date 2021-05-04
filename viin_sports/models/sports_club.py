@@ -12,7 +12,6 @@ class Club(models.Model):
     avatar = fields.Image(string='Avatar', attachment=True)
     publication = fields.Html(string='Publication')
     member_count = fields.Integer(string='Member Count',compute='_compute_member_count',default=0)
-
     
     president_ids = fields.Many2many(
         string="Presidents",
@@ -29,7 +28,7 @@ class Club(models.Model):
         relation="club_users_rel",
         column1="club_id",
         column2="user_id",
-        default=lambda self: self.env.user
+        default=lambda self: self.env.user,
     )
     team_ids = fields.One2many(
         'sports.team',
@@ -47,14 +46,29 @@ class Club(models.Model):
     total_balance = fields.Float(string='Total Balance',default=0,readonly=True)
     budget_manager_ids = fields.One2many('sports.budget_manager', 'club_id', string='Budget Manager')
     transaction_ids = fields.One2many('sports.transaction', 'club_id', string='Transaction History')
-    # Contribute funds: đóng góp quỹ
-    # Budget history: Lịch sử
+    is_member = fields.Boolean(compute='_check_is_member', string='Check is member')
     
+    
+    def _check_is_member(self):
+        for r in self:
+            if r.env.user in r.member_ids:
+                r.is_member = True
+            else:
+                r.is_member = False
     @api.depends('member_ids')
     def _compute_member_count(self):
         for r in self:
             r.member_count = len(r.member_ids)
-    @api.depends('')
-    def _compute_total_balance(self):
+            
+    def action_request_join(self):
+        # sau nay se tao ra approval request o day
         for r in self:
-            r.total_balance = 0
+            r.member_ids |= self.env.user
+            
+    def action_leave_club(self):
+        # sau nay se tao ra approval request o day
+        for r in self:
+            r.member_ids = r.member_ids - self.env.user
+        
+            
+            

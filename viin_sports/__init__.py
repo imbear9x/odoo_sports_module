@@ -2,6 +2,7 @@
 
 from . import controllers
 from . import models
+from . import wizards
 from functools import partial
 
 def uninstall_hook(cr, registry):
