@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<odoo>
+        <record id="sport_player_index_view_form" model="ir.ui.view">
+            <field name="name">player index</field>
+            <field name="model">player_index</field>
+            <field name="arch" type="xml">
+                <form string="Edit Player Index">
+                    <group class="oe_title">
+                        <field name="i_power"/>
+                        <field name="i_speed"/>
+                        <field name="i_skill"/>
+                        <field name="i_defending"/>
+                        <!-- <field name="i_general"/> -->
+                    </group>
+                    <footer>
+                        <button name="update_index_action" string="Submit" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="sports_player_index_action" model="ir.actions.act_window">
+            <field name="name">Edit player index</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">player_index</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="sport_player_index_view_form"/>
+            <field name="target">new</field>
+        </record>
+</odoo>

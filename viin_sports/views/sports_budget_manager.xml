@@ -28,7 +28,8 @@
 							string="Finish" class="oe_highlight" 
 							attrs="{'invisible': [('state','!=','active')]}"/>
 						<button name="%(viin_sports.sports_add_member_contribute_action)d" type="action"
-							string="Add Contribute Mem" class="oe_highlight" />
+							string="Add Contribute Mem" class="oe_highlight" 
+							attrs="{'invisible': [('state','!=','active')]}"/>
 							
 						<field name="state" widget="statusbar"
 							statusbar_visiable="ready,active,finish" />

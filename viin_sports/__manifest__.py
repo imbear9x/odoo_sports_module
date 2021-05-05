@@ -23,6 +23,7 @@
         'security/ir.model.access.csv',
         'views/root_menu.xml',
         'wizards/add_contribute_member_view.xml',
+        'wizards/player_index.xml',
         'views/templates.xml',
         'views/sports_team.xml',
         'views/sports_clubs.xml',
