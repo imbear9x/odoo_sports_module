@@ -50,7 +50,8 @@ class Team(models.Model):
         for r in self:
             r.member_count = len(r.member_ids)
             r.total_power = sum(r.member_ids.mapped('i_general'))
-            r.general_power = r.total_power / len(r.member_ids)
+            _member_count = len(r.member_ids) if len(r.member_ids) != 0 else 1
+            r.general_power = r.total_power / _member_count
             
 
     

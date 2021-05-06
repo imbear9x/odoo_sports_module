@@ -12,6 +12,7 @@ class Club(models.Model):
     avatar = fields.Image(string='Avatar', attachment=True)
     publication = fields.Html(string='Publication')
     member_count = fields.Integer(string='Member Count',compute='_compute_member_count',default=0)
+    parent_path = fields.Integer()
     
     president_ids = fields.Many2many(
         string="Presidents",
@@ -48,14 +49,13 @@ class Club(models.Model):
     transaction_ids = fields.One2many('sports.transaction', 'club_id', string='Transaction History')
     is_member = fields.Boolean(compute='_check_is_member', string='Check is member')
     has_team = fields.Boolean(compute='_check_has_team', string='Check has member')
-    
-    
     def _check_is_member(self):
         for r in self:
             if r.env.user in r.member_ids:
                 r.is_member = True
             else:
                 r.is_member = False
+            
     def _check_has_team(self):
         for r in self:
             if r.env.user.team_ids & r.team_ids:
@@ -79,6 +79,9 @@ class Club(models.Model):
     def action_leave_team(self):
         for r in self:
             self.env.user.team_ids -= r.team_ids
+    def action_test_orm(self):
+        for r in self:
+            print(r)
             
     def action_join_random_team(self):
         for r in self:

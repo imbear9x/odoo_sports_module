@@ -13,10 +13,15 @@ class MemberContribute(models.Model):
     )
 
     state = fields.Boolean(string="State", default=False)
+    budget_manager_state = fields.Selection(
+        related='budget_manager_id.state',
+        default='ready',
+        String = 'State'
+    )
     budget_manager_id = fields.Many2one(
         string="Budget Manager",
         comodel_name="sports.budget_manager",
     )
     # def _default_offer_amount(self):
         
-    offer_amount = fields.Float(string='Offer Amount',store=True,)
+    offer_amount = fields.Float(string='Offer Amount',store=True,readonly=False)

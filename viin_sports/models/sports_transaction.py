@@ -1,3 +1,4 @@
+from datetime import datetime
 from odoo import models, fields, api
 from odoo.exceptions import UserError    
 
@@ -8,7 +9,7 @@ class BudgetHistory(models.Model):
     _spec_name = "title"
     
     title = fields.Char(String='Title')
-    transaction_time = fields.Date(string='Time', default=fields.Datetime.now, readonly=True)
+    transaction_time = fields.Datetime(string='Time', default=fields.Datetime.now, readonly=True)
     amount = fields.Float(string='Amount', default=0)
     reason = fields.Text(string='Reason')
     pre_amount = fields.Float(string='Pre Amount')

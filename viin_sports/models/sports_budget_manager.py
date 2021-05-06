@@ -54,6 +54,7 @@ class BudgetManager(models.Model):
         for r in self:
             if r.state == 'active':
                 r.state = 'finish'
+                r.club_id.total_balance += r.real_amount
             else:
                 raise UserError('Only with state  is active')
                 

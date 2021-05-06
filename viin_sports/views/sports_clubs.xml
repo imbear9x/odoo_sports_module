@@ -80,6 +80,8 @@
 					<button name="action_leave_team" type="object"
 						string="Leave Team"
 						attrs="{'invisible': ['|',('is_member','!=',True),('has_team','!=',True)]}" />
+					<button name="action_test_orm" type="object"
+						string="Test Orm" />
 					<sheet>
 						<div class="oe_button_box" name="button_box">
 							<button name="%(sports_player_index_action)d"
@@ -126,14 +128,15 @@
 										<field name="id" />
 										<field name="name" />
 										<field name="slogan" />
-										<!-- <field name="avatar" widget="image" /> -->
+										<field name="avatar" widget="image" />
 										<templates>
 											<t t-name="kanban-box">
 												<div class="oe_kanban_global_click"
 													t-attf-style="text-align:center;flex:none">
-													<!-- <div class="o_kanban_image" t-attf-style="float:none;margin:auto;"> 
+													<div class="o_kanban_image" t-attf-style="float:none;margin:auto;"> 
 														<img t-att-src="kanban_image('sports.team', 'avatar', record.id.raw_value)" 
-														alt="Clubs" /> </div> -->
+														alt="Clubs" /> 
+													</div>
 													<div class="oe_kanban_details"
 														t-attf-style="padding-left: 0px">
 														<h1 class="text-info">
